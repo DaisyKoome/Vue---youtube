@@ -28,7 +28,7 @@
 <body>
     <div id="app" v-cloak>
         {{ greeting }}
-        <input v-model="greeting" />
+        <input @keyup.enter v-model="greeting" />
 
         <hr />
 
