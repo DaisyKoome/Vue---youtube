@@ -43,6 +43,11 @@
                     greeting: 'Hello Vue 3!',
                     isVisible: false,
                 }
+            },
+            methods: {
+                toggleBox() {
+                    this.isVisible = !this.isVisible;
+                }
             }
         });
         app.mount('#app');
