@@ -1,10 +1,33 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import { ref, onMounted, computed, watch } from 'vue'
+
+const todos = ref([])
+const name = ref('')
+
+const input_content = ref('')
+const input_category = ref(null)
+
+const todos_asc = computed(() => todos.value.sort((a, b) => {
+  return b.createdAt - a.createdAt
+}))
+
+watch(name, (newVal) => {
+  localStorage.setItem('name', newVal)
+})
+
+onMounted(() => {
+  name.value = localStorage.getItem('name') || ''
+})
+
 </script>
 
 <template>
-<div>
-  Hello world!
-</div>
+  <main class="app">
+    <section class="greeting">
+      <h2 class="title">
+        What's up, <input type="text" placeholder="Name here" 
+        v-model="name" id="" />
+      </h2>
+    </section>
+  </main>
 </template>
